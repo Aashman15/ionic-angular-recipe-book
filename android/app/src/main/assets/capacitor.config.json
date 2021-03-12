@@ -1,0 +1,13 @@
+{
+  "appId": "com.aashman.ionic-angular-first-app",
+  "appName": "ionic-angular-first-app",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

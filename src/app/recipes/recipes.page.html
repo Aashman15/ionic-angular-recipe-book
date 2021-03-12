@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>recipes</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onAddRecipe()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <app-recipe-item *ngFor="let recipe of recipes" [recipe]="recipe"></app-recipe-item>
+  </ion-list>
+</ion-content>

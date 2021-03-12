@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/recipes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{isEditMode ? 'Edit recipe' : 'Add recipe'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="recipeForm">
+          <ion-item>
+            <ion-label position="floating">Recipe Title</ion-label>
+            <ion-input formControlName="title"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Recipe Image URL</ion-label>
+            <ion-input formControlName="imageUrl"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="recipeForm.get('imageUrl').value">
+            <ion-img src="{{recipeForm.get('imageUrl').value}}"></ion-img>
+          </ion-item>
+          <ion-button (click)="addIngredient()">
+            Add Ingredient
+          </ion-button>
+
+          <div formArrayName="ingredients">
+            <ion-item *ngFor="let ingredient of ingredients.controls; index as i">
+              <ion-input [formControlName]="i"></ion-input>
+              <ion-button (click)="removeIngredient(i)" color="danger">
+                <ion-icon name="close-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </div>
+
+          <ion-button color="success" (click)="onSubmit()">
+            Save
+          </ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
